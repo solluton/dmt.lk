@@ -47,7 +47,7 @@ function startSecureSession() {
 // Create database connection
 function getDBConnection() {
     try {
-        $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=`" . DB_NAME . "`", DB_USER, DB_PASS);
+        $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASS);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $pdo;
     } catch(PDOException $e) {
@@ -65,8 +65,8 @@ function initializeDatabase() {
         
         // Create database if it doesn't exist
         $db_name = DB_NAME;
-        $pdo->exec("CREATE DATABASE IF NOT EXISTS `" . $db_name . "`");
-        $pdo->exec("USE `" . $db_name . "`");
+        $pdo->exec("CREATE DATABASE IF NOT EXISTS " . $db_name);
+        $pdo->exec("USE " . $db_name);
         
         // Create users table
         $sql = "CREATE TABLE IF NOT EXISTS users (
