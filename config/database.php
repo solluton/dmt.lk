@@ -42,7 +42,7 @@ if (session_status() === PHP_SESSION_NONE) {
 // Create database connection
 function getDBConnection() {
     try {
-        $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASS);
+        $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=`" . DB_NAME . "`", DB_USER, DB_PASS);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $pdo;
     } catch(PDOException $e) {
@@ -59,8 +59,9 @@ function initializeDatabase() {
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         
         // Create database if it doesn't exist
-        $pdo->exec("CREATE DATABASE IF NOT EXISTS " . DB_NAME);
-        $pdo->exec("USE " . DB_NAME);
+        $db_name = DB_NAME;
+        $pdo->exec("CREATE DATABASE IF NOT EXISTS `" . $db_name . "`");
+        $pdo->exec("USE `" . $db_name . "`");
         
         // Create users table
         $sql = "CREATE TABLE IF NOT EXISTS users (

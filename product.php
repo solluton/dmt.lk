@@ -446,7 +446,7 @@ margin: 0rem !important;
                     <?php 
                     $mainImage = $product['main_image'] ?? asset('images/dmt_1.avif');
                     // Ensure proper path prefix for uploaded images
-                    if (!empty($product['main_image']) && !str_starts_with($product['main_image'], '/') && !str_starts_with($product['main_image'], 'http')) {
+                    if (!empty($product['main_image']) && strpos($product['main_image'], '/') !== 0 && strpos($product['main_image'], 'http') !== 0) {
                         $mainImage = asset($product['main_image']);
                     }
                     $altText = !empty($product['title']) ? htmlspecialchars($product['title']) : 'Product Image';
@@ -838,7 +838,7 @@ margin: 0rem !important;
                       <?php 
                       $specImage = $product['specifications_image'];
                       // Ensure the image path is absolute
-                      if (!str_starts_with($specImage, '/') && !str_starts_with($specImage, 'http')) {
+                      if (strpos($specImage, '/') !== 0 && strpos($specImage, 'http') !== 0) {
                           $specImage = asset($specImage);
                       }
                       ?>
