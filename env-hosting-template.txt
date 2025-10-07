@@ -1,0 +1,27 @@
+# DMT Cricket Hosting Environment Configuration
+# Copy this file to .env and update with your actual hosting values
+
+# Site Configuration
+SITE_URL=dmt.lk
+
+# Database Configuration (UPDATE THESE WITH YOUR HOSTING DETAILS)
+DB_HOST=localhost
+DB_NAME=sollvctb_dmtlk
+DB_USER=sollvctb_dmtlk
+DB_PASS=YOUR_DATABASE_PASSWORD_HERE
+
+# SMTP Configuration
+SMTP_HOST=premium5.web-hosting.com
+SMTP_PORT=587
+SMTP_USERNAME=leads@solluton.com
+SMTP_PASSWORD=your-smtp-password-here
+SMTP_ENCRYPTION=tls
+
+# Email Settings
+FROM_EMAIL=leads@solluton.com
+FROM_NAME=DMT Cricket
+LEAD_EMAIL_SUBJECT=New Contact Form Submission - DMT Cricket
+
+# Application Settings
+APP_ENV=production
+APP_DEBUG=false
