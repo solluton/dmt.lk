@@ -80,55 +80,6 @@ $(document).ready(function() {
         });
     }
 
-    // Initialize Blog Posts Table
-    if ($('#blogPostsTable').length) {
-        $('#blogPostsTable').DataTable({
-            order: [[5, 'desc']], // Sort by updated date descending
-            columnDefs: [
-                { 
-                    targets: [6], // Actions column
-                    orderable: false,
-                    searchable: false
-                },
-                {
-                    targets: [2], // Popular column
-                    render: function(data, type, row) {
-                        // Don't modify the display, let the original HTML render as-is
-                        return data;
-                    }
-                },
-                {
-                    targets: [3], // Status column
-                    render: function(data, type, row) {
-                        // Don't modify the display, let the original HTML render as-is
-                        return data;
-                    }
-                }
-            ],
-            buttons: [
-                {
-                    extend: 'excel',
-                    text: '<i class="fi fi-rr-file-excel me-1"></i>Export Excel',
-                    className: 'btn btn-success btn-sm'
-                }
-            ]
-        });
-    }
-
-    // Initialize Blog Categories Table
-    if ($('#blogCategoriesTable').length) {
-        $('#blogCategoriesTable').DataTable({
-            order: [[3, 'desc']], // Sort by created date descending
-            columnDefs: [
-                { 
-                    targets: [4], // Actions column
-                    orderable: false,
-                    searchable: false
-                }
-            ]
-        });
-    }
-
     // Initialize URL Redirects Table
     if ($('#urlRedirectsTable').length) {
         $('#urlRedirectsTable').DataTable({

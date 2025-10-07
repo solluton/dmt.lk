@@ -85,9 +85,6 @@ $social_media = $company_data['social_media'] ?? [];
                   <a href="quality-assurance" class="footer-menu-text-link">Quality Assurance</a>
                 </li>
                 <li class="footer-menu-list-item">
-                  <a href="blog" class="footer-menu-text-link">Blog</a>
-                </li>
-                <li class="footer-menu-list-item">
                   <a href="contact-us" class="footer-menu-text-link">Contact Us</a>
                 </li>
               </ul>

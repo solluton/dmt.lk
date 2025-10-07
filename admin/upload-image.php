@@ -11,9 +11,9 @@ requireLogin();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Log the request for debugging
-error_log("Upload request received: " . print_r($_POST, true));
-error_log("Files received: " . print_r($_FILES, true));
+// Log the request for debugging (removed for security)
+// error_log("Upload request received: " . print_r($_POST, true));
+// error_log("Files received: " . print_r($_FILES, true));
 
 /**
  * Enhanced server-side file validation

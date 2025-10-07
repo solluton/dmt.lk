@@ -27,17 +27,6 @@ $current_page = basename($_SERVER['PHP_SELF']);
                     <li class="nav-label mb-2 mt-4 px-6 fs-11 fw-semibold text-muted text-uppercase" style="letter-spacing: 1px">
                         Content Management
                     </li>
-                    <li class="<?= (in_array($current_page, ['blog-posts.php', 'blog-create.php', 'blog-edit.php', 'blog-categories.php'])) ? 'mm-active' : '' ?>">
-                        <a class="has-arrow" href="javascript:void(0);">
-                            <i class="fi fi-rr-document"></i>
-                            <span class="mm-text">Blog Posts</span>
-                        </a>
-                        <ul>
-                            <li><a class="sub-menu <?= ($current_page == 'blog-posts.php') ? 'mm-active' : '' ?>" href="/admin/blog-posts">All Posts</a></li>
-                            <li><a class="sub-menu <?= ($current_page == 'blog-create.php') ? 'mm-active' : '' ?>" href="/admin/blog-create">Create Post</a></li>
-                            <li><a class="sub-menu <?= ($current_page == 'blog-categories.php') ? 'mm-active' : '' ?>" href="/admin/blog-categories">Categories</a></li>
-                        </ul>
-                    </li>
                     <li class="<?= (in_array($current_page, ['products.php', 'product-create.php', 'product-edit.php'])) ? 'mm-active' : '' ?>">
                         <a class="has-arrow" href="javascript:void(0);">
                             <i class="fi fi-rr-box-open"></i>

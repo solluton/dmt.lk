@@ -30,15 +30,13 @@ if (isset($_GET['success'])) {
     }
 }
 
-// Get all slug redirects with post/product information
+// Get all slug redirects with product information
 try {
     $pdo = getDBConnection();
     $stmt = $pdo->query("
         SELECT sr.*, 
-               bp.title as post_title, bp.slug as current_slug,
                p.title as product_title, p.slug as current_product_slug
         FROM slug_redirects sr 
-        LEFT JOIN blog_posts bp ON sr.post_id = bp.id AND sr.redirect_type = 'blog'
         LEFT JOIN products p ON sr.product_id = p.id AND sr.redirect_type = 'product'
         ORDER BY sr.created_at DESC
     ");
@@ -131,8 +129,8 @@ try {
                 <a href="products.php" class="btn btn-outline-primary">
                   <i class="fi fi-rr-box me-2"></i>Products
                 </a>
-                <a href="blog-posts.php" class="btn btn-outline-secondary">
-                  <i class="fi fi-rr-arrow-left me-2"></i>Blog Posts
+                <a href="products.php" class="btn btn-outline-secondary">
+                  <i class="fi fi-rr-arrow-left me-2"></i>Products
                 </a>
               </div>
             </div>
@@ -180,8 +178,8 @@ try {
                     <?php foreach ($redirects as $redirect): ?>
                       <tr>
                         <td>
-                          <span class="badge <?= $redirect['redirect_type'] == 'blog' ? 'bg-info' : 'bg-success' ?>">
-                            <?= ucfirst($redirect['redirect_type']) ?>
+                          <span class="badge bg-success">
+                            Product
                           </span>
                         </td>
                         <td>
@@ -191,41 +189,21 @@ try {
                           <code>/<?= $redirect['redirect_type'] ?>/<?php echo htmlspecialchars($redirect['new_slug']); ?></code>
                         </td>
                         <td>
-                          <?php if ($redirect['redirect_type'] == 'blog'): ?>
-                            <?php if ($redirect['post_title']): ?>
-                              <a href="blog-edit.php?id=<?php echo $redirect['post_id']; ?>" class="text-decoration-none">
-                                <?php echo htmlspecialchars($redirect['post_title']); ?>
-                              </a>
-                            <?php else: ?>
-                              <span class="text-muted">Post deleted</span>
-                            <?php endif; ?>
+                          <?php if ($redirect['product_title']): ?>
+                            <a href="product-update.php?id=<?php echo $redirect['product_id']; ?>" class="text-decoration-none">
+                              <?php echo htmlspecialchars($redirect['product_title']); ?>
+                            </a>
                           <?php else: ?>
-                            <?php if ($redirect['product_title']): ?>
-                              <a href="product-edit.php?id=<?php echo $redirect['product_id']; ?>" class="text-decoration-none">
-                                <?php echo htmlspecialchars($redirect['product_title']); ?>
-                              </a>
-                            <?php else: ?>
-                              <span class="text-muted">Product deleted</span>
-                            <?php endif; ?>
+                            <span class="text-muted">Product deleted</span>
                           <?php endif; ?>
                         </td>
                         <td>
-                          <?php if ($redirect['redirect_type'] == 'blog'): ?>
-                            <?php if ($redirect['current_slug']): ?>
-                              <a href="../blog/<?php echo htmlspecialchars($redirect['current_slug']); ?>" target="_blank" class="text-decoration-none">
-                                <i class="fi fi-rr-external-link me-1"></i>View Post
-                              </a>
-                            <?php else: ?>
-                              <span class="text-muted">-</span>
-                            <?php endif; ?>
+                          <?php if ($redirect['current_product_slug']): ?>
+                            <a href="../product/<?php echo htmlspecialchars($redirect['current_product_slug']); ?>" target="_blank" class="text-decoration-none">
+                              <i class="fi fi-rr-external-link me-1"></i>View Product
+                            </a>
                           <?php else: ?>
-                            <?php if ($redirect['current_product_slug']): ?>
-                              <a href="../product/<?php echo htmlspecialchars($redirect['current_product_slug']); ?>" target="_blank" class="text-decoration-none">
-                                <i class="fi fi-rr-external-link me-1"></i>View Product
-                              </a>
-                            <?php else: ?>
-                              <span class="text-muted">-</span>
-                            <?php endif; ?>
+                            <span class="text-muted">-</span>
                           <?php endif; ?>
                         </td>
                         <td><?php echo date('M j, Y H:i', strtotime($redirect['created_at'])); ?></td>
@@ -253,7 +231,7 @@ try {
               <div class="text-center py-5">
                 <i class="fi fi-rr-arrow-right-arrow-left" style="font-size: 3rem; color: #ccc;"></i>
                 <h5 class="mt-3 text-muted">No redirects found</h5>
-                <p class="text-muted">Slug redirects will appear here when blog post URLs are changed.</p>
+                <p class="text-muted">Slug redirects will appear here when product URLs are changed.</p>
               </div>
             <?php endif; ?>
           </div>

@@ -1,7 +1,7 @@
 <?php
 /**
  * Redirect Management Functions
- * Handles both blog and product redirects
+ * Handles product redirects
  */
 
 require_once __DIR__ . '/database.php';
@@ -10,37 +10,36 @@ require_once __DIR__ . '/database.php';
  * Create or update a redirect entry
  * @param string $old_slug The old slug
  * @param string $new_slug The new slug
- * @param string $type 'blog' or 'product'
- * @param int $item_id The ID of the blog post or product
+ * @param int $product_id The ID of the product
  * @return bool Success status
  */
-function createOrUpdateRedirect($old_slug, $new_slug, $type, $item_id) {
+function createOrUpdateRedirect($old_slug, $new_slug, $product_id) {
     try {
         $pdo = getDBConnection();
         
         // Check if redirect already exists
         $stmt = $pdo->prepare("
             SELECT id FROM slug_redirects 
-            WHERE old_slug = ? AND redirect_type = ?
+            WHERE old_slug = ? AND redirect_type = 'product'
         ");
-        $stmt->execute([$old_slug, $type]);
+        $stmt->execute([$old_slug]);
         $existing = $stmt->fetch();
         
         if ($existing) {
             // Update existing redirect
             $stmt = $pdo->prepare("
                 UPDATE slug_redirects 
-                SET new_slug = ?, " . ($type == 'blog' ? 'post_id' : 'product_id') . " = ?, created_at = NOW()
+                SET new_slug = ?, product_id = ?, created_at = NOW()
                 WHERE id = ?
             ");
-            return $stmt->execute([$new_slug, $item_id, $existing['id']]);
+            return $stmt->execute([$new_slug, $product_id, $existing['id']]);
         } else {
             // Create new redirect
             $stmt = $pdo->prepare("
-                INSERT INTO slug_redirects (old_slug, new_slug, redirect_type, " . ($type == 'blog' ? 'post_id' : 'product_id') . ", created_at)
-                VALUES (?, ?, ?, ?, NOW())
+                INSERT INTO slug_redirects (old_slug, new_slug, redirect_type, product_id, created_at)
+                VALUES (?, ?, 'product', ?, NOW())
             ");
-            return $stmt->execute([$old_slug, $new_slug, $type, $item_id]);
+            return $stmt->execute([$old_slug, $new_slug, $product_id]);
         }
     } catch (Exception $e) {
         error_log("Error creating redirect: " . $e->getMessage());
@@ -49,21 +48,19 @@ function createOrUpdateRedirect($old_slug, $new_slug, $type, $item_id) {
 }
 
 /**
- * Delete redirects for a specific item
- * @param int $item_id The ID of the blog post or product
- * @param string $type 'blog' or 'product'
+ * Delete redirects for a specific product
+ * @param int $product_id The ID of the product
  * @return bool Success status
  */
-function deleteRedirectsForItem($item_id, $type) {
+function deleteRedirectsForProduct($product_id) {
     try {
         $pdo = getDBConnection();
-        $column = $type == 'blog' ? 'post_id' : 'product_id';
         
         $stmt = $pdo->prepare("
             DELETE FROM slug_redirects 
-            WHERE $column = ? AND redirect_type = ?
+            WHERE product_id = ? AND redirect_type = 'product'
         ");
-        return $stmt->execute([$item_id, $type]);
+        return $stmt->execute([$product_id]);
     } catch (Exception $e) {
         error_log("Error deleting redirects: " . $e->getMessage());
         return false;
@@ -79,7 +76,7 @@ function deleteRedirectsForItem($item_id, $type) {
  */
 function handleProductSlugChange($product_id, $old_slug, $new_slug) {
     if ($old_slug && $new_slug && $old_slug !== $new_slug) {
-        return createOrUpdateRedirect($old_slug, $new_slug, 'product', $product_id);
+        return createOrUpdateRedirect($old_slug, $new_slug, $product_id);
     }
     return true;
 }
@@ -90,29 +87,6 @@ function handleProductSlugChange($product_id, $old_slug, $new_slug) {
  * @return bool Success status
  */
 function handleProductDeletion($product_id) {
-    return deleteRedirectsForItem($product_id, 'product');
-}
-
-/**
- * Handle blog post slug change
- * @param int $post_id The post ID
- * @param string $old_slug The old slug
- * @param string $new_slug The new slug
- * @return bool Success status
- */
-function handleBlogSlugChange($post_id, $old_slug, $new_slug) {
-    if ($old_slug && $new_slug && $old_slug !== $new_slug) {
-        return createOrUpdateRedirect($old_slug, $new_slug, 'blog', $post_id);
-    }
-    return true;
-}
-
-/**
- * Handle blog post deletion
- * @param int $post_id The post ID
- * @return bool Success status
- */
-function handleBlogDeletion($post_id) {
-    return deleteRedirectsForItem($post_id, 'blog');
+    return deleteRedirectsForProduct($product_id);
 }
 ?>

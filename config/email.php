@@ -17,7 +17,7 @@ function sendEmail($to, $subject, $message, $is_html = false, $from_email = null
     $smtp_host = env('SMTP_HOST', 'premium5.web-hosting.com');
     $smtp_port = env('SMTP_PORT', '587');
     $smtp_username = env('SMTP_USERNAME', 'leads@solluton.com');
-    $smtp_password = env('SMTP_PASSWORD', '86w7IhKW??M?');
+    $smtp_password = env('SMTP_PASSWORD', '');
     $smtp_encryption = env('SMTP_ENCRYPTION', 'tls');
     
     // Default from email and name

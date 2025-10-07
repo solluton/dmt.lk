@@ -18,15 +18,17 @@ if ($path === '/login' || $path === '/login/') {
     exit;
 }
 
-// Handle forgot password URL
+// Block forgot password route (not needed)
 if ($path === '/forgot-password' || $path === '/forgot-password/') {
-    include 'forgot-password.php';
+    http_response_code(404);
+    include '404.php';
     exit;
 }
 
-// Handle admin password reset URL
+// Block admin password reset route (not needed)
 if ($path === '/admin-password-reset' || $path === '/admin-password-reset/') {
-    include 'admin-password-reset.php';
+    http_response_code(404);
+    include '404.php';
     exit;
 }
 

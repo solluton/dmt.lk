@@ -85,9 +85,9 @@ try {
   <meta charset="utf-8" />
   <meta http-equiv="x-ua-compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="NeoMed Pharma - Email Queue Management" />
-  <meta name="keyword" content="neomed, pharma, email, queue, admin" />
-  <meta name="author" content="NeoMed Pharma" />
+  <meta name="description" content="DMT Cricket - Email Queue Management" />
+  <meta name="keyword" content="dmt, cricket, email, queue, admin" />
+  <meta name="author" content="DMT Cricket" />
   
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -99,14 +99,14 @@ try {
   <link href="../images/webclip.png" rel="apple-touch-icon">
   
   <!-- Title -->
-  <title>Email Queue Management | NeoMed Pharma - Admin Dashboard</title>
+  <title>Email Queue Management | DMT Cricket - Admin Dashboard</title>
   
   <!-- Dashboard UI CSS -->
   <link rel="stylesheet" href="../dashboard ui/dist/assets/vendors/metismenu/metisMenu.min.css">
   <link rel="stylesheet" href="../dashboard ui/dist/assets/vendors/@flaticon/flaticon-uicons/css/all/all.css">
   <link rel="stylesheet" type="text/css" href="../dashboard ui/dist/assets/css/theme.min.css">
   
-  <!-- NeoMed Custom Dashboard Colors -->
+  <!-- DMT Custom Dashboard Colors -->
   <link rel="stylesheet" type="text/css" href="../css/dashboard-custom.css">
   
   <!-- SweetAlert2 -->
