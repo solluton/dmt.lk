@@ -798,7 +798,7 @@ margin: 0rem !important;
                       
                       // If no specifications, show default content
                       if (empty($specifications) || (empty($specifications[0]['title']) && empty($specifications[0]['description']))) {
-                        echo '
+                        ?>
                         <div id="w-node-_7ce207f1-4f29-2d49-14c5-5a1554d043a9-3453c016" class="layout34_item">
                           <div class="layout34_item-icon-wrapper"><img loading="lazy" src="<?= asset('images/bullot.png') ?>" alt="" class="icon-1x1-medium"></div>
                           <div class="layout34_item-text-wrapper">
@@ -807,7 +807,8 @@ margin: 0rem !important;
                             </div>
                             <p>Detailed product specifications will be available soon. Contact us for more information.</p>
                           </div>
-                        </div>';
+                        </div>
+                        <?php
                       } else {
                         // Display actual specifications
                         foreach ($specifications as $index => $spec) {
@@ -815,16 +816,17 @@ margin: 0rem !important;
                             $nodeId = $index === 0 ? 'w-node-_7ce207f1-4f29-2d49-14c5-5a1554d043a9-3453c016' : 
                                      ($index === 1 ? 'w-node-_7ce207f1-4f29-2d49-14c5-5a1554d043b8-3453c016' : 
                                       'w-node-_7ce207f1-4f29-2d49-14c5-5a1554d043c7-3453c016');
-                            echo '
-                            <div id="' . $nodeId . '" class="layout34_item">
+                            ?>
+                            <div id="<?= $nodeId ?>" class="layout34_item">
                               <div class="layout34_item-icon-wrapper"><img loading="lazy" src="<?= asset('images/bullot.png') ?>" alt="" class="icon-1x1-medium"></div>
                               <div class="layout34_item-text-wrapper">
                                 <div class="margin-bottom margin-xsmall">
-                                  <h3 class="heading-style-h5">' . htmlspecialchars($spec['title'] ?: 'Specification') . '</h3>
+                                  <h3 class="heading-style-h5"><?= htmlspecialchars($spec['title'] ?: 'Specification') ?></h3>
                                 </div>
-                                <p>' . htmlspecialchars($spec['description'] ?: 'No description available.') . '</p>
+                                <p><?= htmlspecialchars($spec['description'] ?: 'No description available.') ?></p>
                               </div>
-                            </div>';
+                            </div>
+                            <?php
                           }
                         }
                       }
