@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: http://127.0.0.1:8000/sitemap.xml
+
+# Disallow admin areas
+Disallow: /admin/
+Disallow: /config/
+Disallow: /uploads/
+Disallow: /phpmailer/
+
+# Allow important directories
+Allow: /css/
+Allow: /js/
+Allow: /images/
+Allow: /fonts/
