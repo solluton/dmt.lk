@@ -40,7 +40,7 @@
             <a href="index.php" class="nav-link w-nav-link">Home</a>
             <a href="about-us.php" class="nav-link w-nav-link">About Us</a>
             <a href="services.php" class="nav-link w-nav-link">Services</a>
-            <a href="blog.php" class="nav-link w-nav-link">Blog</a>
+            <a href="contact-us.php" class="nav-link w-nav-link">Contact</a>
             <a href="partnership.php" class="nav-link mobile w-nav-link">Partnership</a>
             <a href="quality-assurance.php" class="nav-link mobile w-nav-link">Quality Assurance</a>
             <div data-delay="0" data-hover="true" data-w-id="ff957332-dadb-3180-ab6a-900674ebe5bb" class="menu-dropdown-wrapper w-dropdown">
@@ -193,7 +193,7 @@
                     <a href="quality-assurance.php" class="footer-menu-text-link">Quality Asurrance</a>
                   </li>
                   <li class="footer-menu-list-item">
-                    <a href="blog.php" class="footer-menu-text-link">Blog</a>
+                    <a href="contact-us.php" class="footer-menu-text-link">Contact</a>
                   </li>
                   <li class="footer-menu-list-item">
                     <a href="contact-us.php" class="footer-menu-text-link">Contact Us</a>

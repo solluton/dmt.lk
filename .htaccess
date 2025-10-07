@@ -10,7 +10,7 @@ RewriteRule ^admin/ - [L]
 RewriteRule ^(css|js|images|fonts|uploads|documents|phpmailer|config)/ - [L]
 
 # Handlers and special files
-RewriteRule ^(contact-handler|process_email_queue|admin-password-reset|forgot-password|login|logout|dashboard)\.php$ - [L]
+RewriteRule ^(contact-handler|process_email_queue|login|logout|dashboard)\.php$ - [L]
 
 # Redirect old product URLs to clean URLs (301 redirect)
 RewriteCond %{THE_REQUEST} /product\.php\?slug=([^&\s]+) [NC]
@@ -39,5 +39,5 @@ RewriteRule . router.php [L]
 
 # Redirect .php URLs to clean URLs (301 redirect) - must be last
 RewriteCond %{THE_REQUEST} /([^.]+)\.php [NC]
-RewriteCond %1 !^(contact-handler|process_email_queue|admin-password-reset|forgot-password|login|logout|dashboard)$
+RewriteCond %1 !^(contact-handler|process_email_queue|login|logout|dashboard)$
 RewriteRule ^ /%1? [NC,L,R=301]

@@ -9,7 +9,7 @@ function getSimpleDBConnection() {
     loadEnv();
     
     $host = $_ENV['DB_HOST'] ?? 'localhost';
-    $dbname = $_ENV['DB_NAME'] ?? 'neomed_db';
+    $dbname = $_ENV['DB_NAME'] ?? 'dmt_cricket_db';
     $username = $_ENV['DB_USER'] ?? 'root';
     $password = $_ENV['DB_PASS'] ?? '';
     $port = $_ENV['DB_PORT'] ?? '3306';

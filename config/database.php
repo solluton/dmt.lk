@@ -79,55 +79,6 @@ function initializeDatabase() {
         
         $pdo->exec($sql);
         
-        // Create blog posts table
-        $sql = "CREATE TABLE IF NOT EXISTS blog_posts (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            title VARCHAR(255) NOT NULL,
-            slug VARCHAR(191) UNIQUE NOT NULL,
-            content LONGTEXT NOT NULL,
-            excerpt TEXT NULL,
-            featured_image VARCHAR(255) NULL,
-            category_id INT NULL,
-            popular BOOLEAN DEFAULT FALSE,
-            status ENUM('draft', 'published') DEFAULT 'draft',
-            author_id INT NOT NULL,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-            FOREIGN KEY (author_id) REFERENCES users(id) ON DELETE CASCADE,
-            FOREIGN KEY (category_id) REFERENCES blog_categories(id) ON DELETE SET NULL
-        )";
-        
-        $pdo->exec($sql);
-        
-        // Create blog categories table
-        $sql = "CREATE TABLE IF NOT EXISTS blog_categories (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            name VARCHAR(100) NOT NULL UNIQUE,
-            slug VARCHAR(100) NOT NULL UNIQUE,
-            description TEXT NULL,
-            color VARCHAR(7) DEFAULT '#007bff',
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-        )";
-        
-        $pdo->exec($sql);
-        
-        // Insert default categories
-        $defaultCategories = [
-            ['Research Insights', 'research-insights', 'Latest research findings and scientific insights', '#28a745'],
-            ['Laboratory Best Practices', 'laboratory-best-practices', 'Best practices for laboratory operations', '#17a2b8'],
-            ['Innovation & Technology', 'innovation-technology', 'Technology innovations and advancements', '#6f42c1'],
-            ['Industry Trends', 'industry-trends', 'Current trends in the pharmaceutical industry', '#fd7e14'],
-            ['Sustainability in Science', 'sustainability-science', 'Environmental sustainability in scientific practices', '#20c997'],
-            ['Events & Workshops', 'events-workshops', 'Upcoming events and educational workshops', '#dc3545'],
-            ['Educational Resources', 'educational-resources', 'Learning materials and educational content', '#6c757d']
-        ];
-        
-        foreach ($defaultCategories as $category) {
-            $stmt = $pdo->prepare("INSERT IGNORE INTO blog_categories (name, slug, description, color) VALUES (?, ?, ?, ?)");
-            $stmt->execute($category);
-        }
-        
         // Create contact leads table
         $sql = "CREATE TABLE IF NOT EXISTS contact_leads (
             id INT AUTO_INCREMENT PRIMARY KEY,
@@ -145,34 +96,6 @@ function initializeDatabase() {
         )";
         
         $pdo->exec($sql);
-        
-        // Add category column if it doesn't exist (migration)
-        try {
-            $pdo->exec("ALTER TABLE blog_posts ADD COLUMN category VARCHAR(100) NULL");
-        } catch(PDOException $e) {
-            // Column already exists, ignore error
-        }
-        
-        // Add popular column if it doesn't exist (migration)
-        try {
-            $pdo->exec("ALTER TABLE blog_posts ADD COLUMN popular BOOLEAN DEFAULT FALSE");
-        } catch(PDOException $e) {
-            // Column already exists, ignore error
-        }
-        
-        // Migrate category column to category_id (migration)
-        try {
-            // First, add the new category_id column
-            $pdo->exec("ALTER TABLE blog_posts ADD COLUMN category_id INT NULL");
-            
-            // Add foreign key constraint
-            $pdo->exec("ALTER TABLE blog_posts ADD CONSTRAINT fk_blog_posts_category FOREIGN KEY (category_id) REFERENCES blog_categories(id) ON DELETE SET NULL");
-            
-            // Note: We'll keep the old category column for now to avoid data loss
-            // You can manually migrate data and drop the old column later if needed
-        } catch(PDOException $e) {
-            // Migration already applied or failed, ignore error
-        }
         
         // Create products table
         $sql = "CREATE TABLE IF NOT EXISTS products (
