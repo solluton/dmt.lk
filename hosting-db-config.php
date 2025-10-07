@@ -5,7 +5,7 @@
 // Database configuration for hosting
 define('DB_HOST', 'localhost');
 define('DB_USER', 'sollvctb_dmtlk');  // Your database username
-define('DB_PASS', 'YOUR_DATABASE_PASSWORD_HERE');  // Your database password
+define('DB_PASS', 'F640Vk=l}lKK');  // Your database password
 define('DB_NAME', 'sollvctb_dmtlk');  // Your database name
 
 // Alternative configurations to try:

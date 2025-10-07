@@ -9,7 +9,7 @@ require_once __DIR__ . '/security.php';
 // Direct database configuration with your working credentials
 define('DB_HOST', 'premium5.web-hosting.com');
 define('DB_USER', 'sollvctb_dmtlk');
-define('DB_PASS', '4ytth0llm#E');
+define('DB_PASS', 'F640Vk=l}lKK');
 define('DB_NAME', 'sollvctb_dmtlk');
 
 // Override with .env values if they exist (but use hardcoded as fallback)

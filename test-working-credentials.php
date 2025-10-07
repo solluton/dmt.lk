@@ -6,7 +6,7 @@ echo "<h1>Database Connection Test with Working Credentials</h1>";
 $servername = "premium5.web-hosting.com";
 $db = "sollvctb_dmtlk";
 $username = "sollvctb_dmtlk";
-$password = "4ytth0llm#E";
+$password = "F640Vk=l}lKK";
 
 echo "<h2>Testing with your working credentials:</h2>";
 echo "<p>Host: $servername</p>";
