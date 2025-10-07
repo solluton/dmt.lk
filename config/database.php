@@ -1,29 +1,16 @@
 <?php
-// Direct database configuration (bypassing .env file)
-// This ensures the database connection works regardless of .env file issues
+// Database configuration using environment variables
+// This ensures the database connection uses .env file values
 
-// Load environment variables (but don't rely on them)
+// Load environment variables
 require_once __DIR__ . '/env.php';
 require_once __DIR__ . '/security.php';
 
-// Direct database configuration with your working credentials
-define('DB_HOST', 'premium5.web-hosting.com');
-define('DB_USER', 'sollvctb_dmtlk');
-define('DB_PASS', 'F640Vk=l}lKK');
-define('DB_NAME', 'sollvctb_dmtlk');
-
-// Override with .env values if they exist (but use hardcoded as fallback)
-if (function_exists('env')) {
-    $env_host = env('DB_HOST');
-    $env_user = env('DB_USER');
-    $env_pass = env('DB_PASS');
-    $env_name = env('DB_NAME');
-    
-    if ($env_host) define('DB_HOST', $env_host);
-    if ($env_user) define('DB_USER', $env_user);
-    if ($env_pass) define('DB_PASS', $env_pass);
-    if ($env_name) define('DB_NAME', $env_name);
-}
+// Database configuration from .env file
+define('DB_HOST', env('DB_HOST', 'localhost'));
+define('DB_USER', env('DB_USER', 'root'));
+define('DB_PASS', env('DB_PASS', ''));
+define('DB_NAME', env('DB_NAME', 'dmt_cricket_db'));
 
 // Secure session configuration
 function secureSession() {
@@ -49,16 +36,18 @@ function secureSession() {
     }
 }
 
-// Initialize secure session
-if (session_status() === PHP_SESSION_NONE) {
-    secureSession();
-    session_start();
+// Start secure session only if not already started
+function startSecureSession() {
+    if (session_status() === PHP_SESSION_NONE) {
+        secureSession();
+        session_start();
+    }
 }
 
 // Create database connection
 function getDBConnection() {
     try {
-        $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASS);
+        $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=`" . DB_NAME . "`", DB_USER, DB_PASS);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $pdo;
     } catch(PDOException $e) {
@@ -168,15 +157,6 @@ function initializeDatabase() {
 }
 
 // Session management
-function startSecureSession() {
-    if (session_status() == PHP_SESSION_NONE) {
-        ini_set('session.cookie_httponly', 1);
-        ini_set('session.use_only_cookies', 1);
-        ini_set('session.cookie_secure', 0); // Set to 1 for HTTPS
-        session_start();
-    }
-}
-
 // Check if user is logged in
 function isLoggedIn() {
     return isset($_SESSION['user_id']) && !empty($_SESSION['user_id']);
