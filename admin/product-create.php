@@ -351,7 +351,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit();
         } else {
             // Redirect after successful operation for regular form submission
-            header('Location: ./products');
+            header('Location: products.php');
             exit();
         }
         

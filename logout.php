@@ -25,6 +25,6 @@ if (isset($_COOKIE['remember_token'])) {
 }
 
 // Redirect to login page
-header('Location: ./admin/login?message=logged_out');
+header('Location: admin/login.php?message=logged_out');
 exit();
 ?>

@@ -96,7 +96,7 @@ function isAuthenticated() {
  */
 function requireAuthentication() {
     if (!isAuthenticated()) {
-        header('Location: ./admin/login');
+        header('Location: login.php');
         exit();
     }
 }
@@ -116,7 +116,7 @@ function isAdmin() {
 function requireAdmin() {
     requireAuthentication();
     if (!isAdmin()) {
-        header('Location: ./admin/dashboard');
+        header('Location: dashboard.php');
         exit();
     }
 }

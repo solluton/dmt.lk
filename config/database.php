@@ -181,7 +181,7 @@ function getCurrentUser() {
 // Redirect to login if not authenticated
 function requireLogin() {
     if (!isLoggedIn()) {
-        header('Location: ./admin/login');
+        header('Location: login.php');
         exit();
     }
 }
@@ -189,7 +189,7 @@ function requireLogin() {
 // Redirect to dashboard if already logged in
 function redirectIfLoggedIn() {
     if (isLoggedIn()) {
-        header('Location: ./admin/dashboard');
+        header('Location: dashboard.php');
         exit();
     }
 }

@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $stmt->execute([$token, $user['id']]);
                 }
                 
-                header('Location: ./dashboard');
+                header('Location: dashboard.php');
                 exit();
             } else {
                 $error = 'Invalid email or password.';
