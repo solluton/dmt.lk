@@ -6,7 +6,7 @@ RewriteRule ^old-website-backup/ - [F,L]
 # Handle static assets (CSS, JS, images, etc.)
 RewriteRule ^(css|js|images|fonts|uploads|documents|phpmailer|config)/ - [L]
 
-# Handle admin directory - allow direct access
+# Handle admin directory - allow direct access to existing files
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^admin/(.*)$ admin/$1 [L]

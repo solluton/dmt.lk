@@ -5,18 +5,6 @@
 $request_uri = $_SERVER['REQUEST_URI'];
 $path = parse_url($request_uri, PHP_URL_PATH);
 
-// Handle admin login URL
-if ($path === '/admin/login' || $path === '/admin/login/') {
-    include 'admin/login.php';
-    exit;
-}
-
-// Handle admin index URL
-if ($path === '/admin' || $path === '/admin/') {
-    include 'admin/index.php';
-    exit;
-}
-
 // Block /login route (only /admin/login is allowed)
 if ($path === '/login' || $path === '/login/') {
     http_response_code(404);
@@ -53,58 +41,6 @@ if ($path === '/contact-handler' || $path === '/contact-handler/') {
 // Handle process email queue URL
 if ($path === '/process-email-queue' || $path === '/process-email-queue/') {
     include 'process_email_queue.php';
-    exit;
-}
-
-// Handle admin dashboard URL (must be before admin exclusion)
-if ($path === '/admin/dashboard' || $path === '/admin/dashboard/') {
-    include 'admin/dashboard.php';
-    exit;
-}
-
-// Handle admin profile URL
-if ($path === '/admin/profile' || $path === '/admin/profile/') {
-    include 'admin/profile.php';
-    exit;
-}
-
-// Handle admin products URLs
-if ($path === '/admin/products' || $path === '/admin/products/') {
-    include 'admin/products.php';
-    exit;
-}
-if ($path === '/admin/product-create' || $path === '/admin/product-create/') {
-    include 'admin/product-create.php';
-    exit;
-}
-if ($path === '/admin/product-edit' || $path === '/admin/product-edit/') {
-    include 'admin/product-edit.php';
-    exit;
-}
-
-// Handle admin contact leads URL
-if ($path === '/admin/contact-leads' || $path === '/admin/contact-leads/') {
-    include 'admin/contact-leads.php';
-    exit;
-}
-
-// Handle admin email queue URL
-if ($path === '/admin/email-queue' || $path === '/admin/email-queue/') {
-    include 'admin/email-queue.php';
-    exit;
-}
-
-// Handle admin settings URLs
-if ($path === '/admin/settings' || $path === '/admin/settings/') {
-    include 'admin/settings.php';
-    exit;
-}
-if ($path === '/admin/slug-redirects' || $path === '/admin/slug-redirects/') {
-    include 'admin/slug-redirects.php';
-    exit;
-}
-if ($path === '/admin/legal-pages' || $path === '/admin/legal-pages/') {
-    include 'admin/legal-pages.php';
     exit;
 }
 
