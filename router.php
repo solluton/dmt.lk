@@ -7,7 +7,13 @@ $path = parse_url($request_uri, PHP_URL_PATH);
 
 // Handle admin login URL
 if ($path === '/admin/login' || $path === '/admin/login/') {
-    include 'login.php';
+    include 'admin/login.php';
+    exit;
+}
+
+// Handle admin index URL
+if ($path === '/admin' || $path === '/admin/') {
+    include 'admin/index.php';
     exit;
 }
 
@@ -52,7 +58,7 @@ if ($path === '/process-email-queue' || $path === '/process-email-queue/') {
 
 // Handle admin dashboard URL (must be before admin exclusion)
 if ($path === '/admin/dashboard' || $path === '/admin/dashboard/') {
-    include 'dashboard.php';
+    include 'admin/dashboard.php';
     exit;
 }
 
