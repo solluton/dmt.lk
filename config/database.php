@@ -4,9 +4,9 @@ require_once __DIR__ . '/env.php';
 require_once __DIR__ . '/security.php';
 
 // Database configuration
-define('DB_HOST', env('DB_HOST', 'localhost'));
+define('DB_HOST', env('DB_HOST', 'premium5.web-hosting.com'));
 define('DB_USER', env('DB_USER', 'sollvctb_dmtlk'));
-define('DB_PASS', env('DB_PASS', ''));
+define('DB_PASS', env('DB_PASS', '4ytth0llm#E'));
 define('DB_NAME', env('DB_NAME', 'sollvctb_dmtlk'));
 
 // Secure session configuration
