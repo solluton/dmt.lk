@@ -1,6 +1,7 @@
 <?php
 // Email configuration using PHPMailer
 require_once __DIR__ . '/env.php';
+require_once __DIR__ . '/url_helper.php';
 require_once __DIR__ . '/../phpmailer/src/Exception.php';
 require_once __DIR__ . '/../phpmailer/src/PHPMailer.php';
 require_once __DIR__ . '/../phpmailer/src/SMTP.php';
@@ -374,7 +375,7 @@ function generateContactEmailTemplate($lead_data) {
     <div class="email-container">
         <!-- Top Logo Section -->
         <div class="top-logo">
-            <img src="' . (!empty($company_details['logo_url']) ? htmlspecialchars($company_details['logo_url']) : '/dmt.lk/images/DMT-LOGO-Main.avif') . '" alt="' . htmlspecialchars($company_details['company_name']) . '" class="logo-image">
+            <img src="' . (!empty($company_details['logo_url']) ? htmlspecialchars($company_details['logo_url']) : asset('images/DMT-LOGO-Main.avif')) . '" alt="' . htmlspecialchars($company_details['company_name']) . '" class="logo-image">
         </div>
         
         <!-- Header Section -->
@@ -443,7 +444,7 @@ function generateContactEmailTemplate($lead_data) {
         <div class="footer">
             <div class="powered-by">Powered by</div>
             <a href="' . htmlspecialchars($company_details['website']) . '" target="_blank">
-                <img src="' . (!empty($company_details['logo_url']) ? htmlspecialchars($company_details['logo_url']) : '/dmt.lk/images/DMT-LOGO-Main.avif') . '" alt="' . htmlspecialchars($company_details['company_name']) . '" class="footer-logo">
+                <img src="' . (!empty($company_details['logo_url']) ? htmlspecialchars($company_details['logo_url']) : asset('images/DMT-LOGO-Main.avif')) . '" alt="' . htmlspecialchars($company_details['company_name']) . '" class="footer-logo">
             </a>
             <div class="company-details">
                 <span class="contact-item">

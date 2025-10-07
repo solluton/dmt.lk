@@ -16,8 +16,12 @@ if (!function_exists('getCompanyEmail')) {
 $current_page = basename($_SERVER['PHP_SELF'], '.php');
 $current_path = $_SERVER['REQUEST_URI'];
 
+// Get base URL for comparison
+$base_url = getBaseUrl();
+$base_path = parse_url($base_url, PHP_URL_PATH) ?: '';
+
 // Determine active states
-$is_home = ($current_page === 'index' || $current_path === '/' || $current_path === '/dmt.lk/' || $current_path === '/dmt.lk');
+$is_home = ($current_page === 'index' || $current_path === '/' || $current_path === $base_path . '/' || $current_path === $base_path);
 $is_about = (strpos($current_path, '/about-us') !== false || $current_page === 'about-us');
 $is_products = (strpos($current_path, '/our-products') !== false || strpos($current_path, '/product') !== false || $current_page === 'our-products');
 $is_contact = (strpos($current_path, '/contact-us') !== false || $current_page === 'contact-us');

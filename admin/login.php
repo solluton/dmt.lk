@@ -1,6 +1,7 @@
 <?php
 require_once '../config/database.php';
 require_once '../config/csrf.php';
+require_once '../config/url_helper.php';
 
 // Redirect if already logged in
 redirectIfLoggedIn();
@@ -70,19 +71,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
   
   <!-- Favicon -->
-  <link href="/dmt.lk/images/favicon.png" rel="shortcut icon" type="image/x-icon">
-  <link href="/dmt.lk/images/webclip.png" rel="apple-touch-icon">
+  <link href="<?= asset('images/favicon.png') ?>" rel="shortcut icon" type="image/x-icon">
+  <link href="<?= asset('images/webclip.png') ?>" rel="apple-touch-icon">
   
   <!-- Title -->
   <title>Login | DMT Cricket - Admin Dashboard</title>
   
   <!-- Dashboard UI CSS -->
-  <link rel="stylesheet" href="/dmt.lk/dashboard ui/dist/assets/vendors/metismenu/metisMenu.min.css">
-  <link rel="stylesheet" href="/dmt.lk/dashboard ui/dist/assets/vendors/@flaticon/flaticon-uicons/css/all/all.css">
-  <link rel="stylesheet" type="text/css" href="/dmt.lk/dashboard ui/dist/assets/css/theme.min.css">
+  <link rel="stylesheet" href="<?= asset('dashboard ui/dist/assets/vendors/metismenu/metisMenu.min.css') ?>">
+  <link rel="stylesheet" href="<?= asset('dashboard ui/dist/assets/vendors/@flaticon/flaticon-uicons/css/all/all.css') ?>">
+  <link rel="stylesheet" type="text/css" href="<?= asset('dashboard ui/dist/assets/css/theme.min.css') ?>">
   
-  <!-- NeoMed Custom Dashboard Colors -->
-  <link rel="stylesheet" type="text/css" href="/dmt.lk/css/dashboard-custom.css">
+  <!-- DMT Custom Dashboard Colors -->
+  <link rel="stylesheet" type="text/css" href="<?= asset('css/dashboard-custom.css') ?>">
   
   <!-- Color Modes JS - DISABLED to force light mode -->
   <!-- <script src="dashboard ui/dist/assets/js/color-modes.min.js"></script> -->
@@ -109,7 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="card-body p-sm-8 p-4">
           <!-- Logo -->
           <div class="text-center mb-4">
-            <img src="/dmt.lk/images/DMT-LOGO-Main.avif" alt="DMT Cricket" style="max-width: 150px;">
+            <img src="<?= asset('images/DMT-LOGO-Main.avif') ?>" alt="DMT Cricket" style="max-width: 150px;">
           </div>
           
           <h4 class="mb-2 fw-semibold text-center">Login to your account</h4>
@@ -165,8 +166,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   </div>
   
   <!-- Scripts -->
-  <script src="/dmt.lk/dashboard ui/dist/assets/js/vendors.min.js"></script>
-  <script src="/dmt.lk/dashboard ui/dist/assets/js/common-init.min.js"></script>
+  <script src="<?= asset('dashboard ui/dist/assets/js/vendors.min.js') ?>"></script>
+  <script src="<?= asset('dashboard ui/dist/assets/js/common-init.min.js') ?>"></script>
   
   <!-- Custom Script -->
   <script>

@@ -6,16 +6,24 @@
 
 /**
  * Get the base URL for the site
- * Automatically detects the correct base URL based on the current environment
+ * Uses SITE_URL from environment or auto-detects based on current environment
  */
 function getBaseUrl() {
     // Check if we're running from command line
     if (php_sapi_name() === 'cli') {
-        // Default fallback for command line
-        return 'http://localhost/dmt.lk';
+        // Use SITE_URL from environment or fallback
+        $site_url = env('SITE_URL', 'localhost/dmt.lk');
+        return 'http://' . $site_url;
     }
     
-    // Check if we're in a subdirectory (like localhost/dmt.lk)
+    // Use SITE_URL from environment if available
+    $site_url = env('SITE_URL');
+    if ($site_url) {
+        $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
+        return $protocol . '://' . $site_url;
+    }
+    
+    // Fallback: Auto-detect based on current environment
     $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
     $host = $_SERVER['HTTP_HOST'] ?? 'localhost';
     $script_name = dirname($_SERVER['SCRIPT_NAME'] ?? '');

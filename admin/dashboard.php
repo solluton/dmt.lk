@@ -1,5 +1,6 @@
 <?php
 require_once '../config/database.php';
+require_once '../config/url_helper.php';
 
 // Require login
 requireLogin();
@@ -42,16 +43,16 @@ try {
   <title>Dashboard | DMT Cricket - Admin Panel</title>
   
   <!-- Favicon -->
-  <link href="/dmt.lk/images/favicon.png" rel="shortcut icon" type="image/x-icon">
-  <link href="/dmt.lk/images/webclip.png" rel="apple-touch-icon">
+  <link href="<?= asset('images/favicon.png') ?>" rel="shortcut icon" type="image/x-icon">
+  <link href="<?= asset('images/webclip.png') ?>" rel="apple-touch-icon">
   
   <!-- Dashboard UI CSS -->
-  <link rel="stylesheet" href="/dmt.lk/dashboard ui/dist/assets/vendors/metismenu/metisMenu.min.css">
-  <link rel="stylesheet" href="/dmt.lk/dashboard ui/dist/assets/vendors/@flaticon/flaticon-uicons/css/all/all.css">
-  <link rel="stylesheet" type="text/css" href="/dmt.lk/dashboard ui/dist/assets/css/theme.min.css">
+  <link rel="stylesheet" href="<?= asset('dashboard ui/dist/assets/vendors/metismenu/metisMenu.min.css') ?>">
+  <link rel="stylesheet" href="<?= asset('dashboard ui/dist/assets/vendors/@flaticon/flaticon-uicons/css/all/all.css') ?>">
+  <link rel="stylesheet" type="text/css" href="<?= asset('dashboard ui/dist/assets/css/theme.min.css') ?>">
   
-  <!-- NeoMed Custom Dashboard Colors -->
-  <link rel="stylesheet" type="text/css" href="/dmt.lk/css/dashboard-custom.css">
+  <!-- DMT Custom Dashboard Colors -->
+  <link rel="stylesheet" type="text/css" href="<?= asset('css/dashboard-custom.css') ?>">
   
   <!-- SweetAlert2 -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -211,8 +212,8 @@ try {
   <div class="edash-menu-backdrop" id="edash-menu-hide"></div>
 
   <!-- Scripts -->
-  <script src="/dmt.lk/dashboard ui/dist/assets/js/vendors.min.js"></script>
-  <script src="/dmt.lk/dashboard ui/dist/assets/js/common-init.min.js"></script>
+  <script src="<?= asset('dashboard ui/dist/assets/js/vendors.min.js') ?>"></script>
+  <script src="<?= asset('dashboard ui/dist/assets/js/common-init.min.js') ?>"></script>
   
   <!-- Custom Script -->
   <script>

@@ -122,12 +122,12 @@ $page_description = $product['meta_description'] ?? $product['description'];
   <meta content="summary_large_image" name="twitter:card">
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <meta content="Webflow" name="generator">
-  <link href="/dmt.lk/css/normalize.css" rel="stylesheet" type="text/css">
-  <link href="/dmt.lk/css/webflow.css" rel="stylesheet" type="text/css">
-  <link href="/dmt.lk/css/dmt-lk.webflow.css" rel="stylesheet" type="text/css">
+  <link href="<?= asset('css/normalize.css') ?>" rel="stylesheet" type="text/css">
+  <link href="<?= asset('css/webflow.css') ?>" rel="stylesheet" type="text/css">
+  <link href="<?= asset('css/dmt-lk.webflow.css') ?>" rel="stylesheet" type="text/css">
   <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
-  <link href="/dmt.lk/images/favicon.png" rel="shortcut icon" type="image/x-icon">
-  <link href="/dmt.lk/images/webclip.png" rel="apple-touch-icon"><!--  Keep this css code to improve the font quality -->
+  <link href="<?= asset('images/favicon.png') ?>" rel="shortcut icon" type="image/x-icon">
+  <link href="<?= asset('images/webclip.png') ?>" rel="apple-touch-icon"><!--  Keep this css code to improve the font quality -->
         <style>
         * {
         -webkit-font-smoothing: antialiased;
@@ -444,10 +444,10 @@ margin: 0rem !important;
                   </div>
                   <div data-w-id="7ce207f1-4f29-2d49-14c5-5a1554d042b2" style="opacity:0" class="layout1_image-wrapper">
                     <?php 
-                    $mainImage = $product['main_image'] ?? '/dmt.lk/images/dmt_1.avif';
+                    $mainImage = $product['main_image'] ?? asset('images/dmt_1.avif');
                     // Ensure proper path prefix for uploaded images
                     if (!empty($product['main_image']) && !str_starts_with($product['main_image'], '/') && !str_starts_with($product['main_image'], 'http')) {
-                        $mainImage = '/dmt.lk/' . ltrim($product['main_image'], '/');
+                        $mainImage = asset($product['main_image']);
                     }
                     $altText = !empty($product['title']) ? htmlspecialchars($product['title']) : 'Product Image';
                     ?>
@@ -577,7 +577,7 @@ margin: 0rem !important;
                         </div>
                         <div class="margin-top margin-small">
                           <div class="testimonial19_client">
-                            <div class="testimonial19_client-image-wrapper"><img loading="lazy" src="/dmt.lk/images/feedback--4.avif" alt="" class="testimonial19_customer-image"></div>
+                            <div class="testimonial19_client-image-wrapper"><img loading="lazy" src="<?= asset('images/feedback--4.avif') ?>" alt="" class="testimonial19_customer-image"></div>
                             <div class="testimonial19_client-info">
                               <div class="testamonial-name">Rajiv Perera</div>
                               <div>Colombo Lions SC<br></div>
@@ -622,7 +622,7 @@ margin: 0rem !important;
                         </div>
                         <div class="margin-top margin-small">
                           <div class="testimonial19_client">
-                            <div class="testimonial19_client-image-wrapper"><img loading="lazy" src="/dmt.lk/images/feedback--2.avif" alt="" class="testimonial19_customer-image"></div>
+                            <div class="testimonial19_client-image-wrapper"><img loading="lazy" src="<?= asset('images/feedback--2.avif') ?>" alt="" class="testimonial19_customer-image"></div>
                             <div class="testimonial19_client-info">
                               <div class="testamonial-name">Tharindu Lakshan</div>
                               <div>Kandy Softball Association<br></div>
@@ -667,7 +667,7 @@ margin: 0rem !important;
                         </div>
                         <div class="margin-top margin-small">
                           <div class="testimonial19_client">
-                            <div class="testimonial19_client-image-wrapper"><img loading="lazy" src="/dmt.lk/images/feedback-.avif" alt="" class="testimonial19_customer-image"></div>
+                            <div class="testimonial19_client-image-wrapper"><img loading="lazy" src="<?= asset('images/feedback-.avif') ?>" alt="" class="testimonial19_customer-image"></div>
                             <div class="testimonial19_client-info">
                               <div class="testamonial-name">Sajith Gunasekara</div>
                               <div>Softball Coach<br></div>
@@ -712,7 +712,7 @@ margin: 0rem !important;
                         </div>
                         <div class="margin-top margin-small">
                           <div class="testimonial19_client">
-                            <div class="testimonial19_client-image-wrapper"><img loading="lazy" src="/dmt.lk/images/feedback--3.avif" alt="" class="testimonial19_customer-image"></div>
+                            <div class="testimonial19_client-image-wrapper"><img loading="lazy" src="<?= asset('images/feedback--3.avif') ?>" alt="" class="testimonial19_customer-image"></div>
                             <div class="testimonial19_client-info">
                               <div class="testamonial-name">Chamil Fernando</div>
                               <div>Softball Coach<br></div>
@@ -757,7 +757,7 @@ margin: 0rem !important;
                         </div>
                         <div class="margin-top margin-small">
                           <div class="testimonial19_client">
-                            <div class="testimonial19_client-image-wrapper"><img loading="lazy" src="/dmt.lk/images/feedback--1.avif" alt="" class="testimonial19_customer-image"></div>
+                            <div class="testimonial19_client-image-wrapper"><img loading="lazy" src="<?= asset('images/feedback--1.avif') ?>" alt="" class="testimonial19_customer-image"></div>
                             <div class="testimonial19_client-info">
                               <div class="testamonial-name">Nuwan De Silva</div>
                               <div>Community Club Player</div>
@@ -800,7 +800,7 @@ margin: 0rem !important;
                       if (empty($specifications) || (empty($specifications[0]['title']) && empty($specifications[0]['description']))) {
                         echo '
                         <div id="w-node-_7ce207f1-4f29-2d49-14c5-5a1554d043a9-3453c016" class="layout34_item">
-                          <div class="layout34_item-icon-wrapper"><img loading="lazy" src="/dmt.lk/images/bullot.png" alt="" class="icon-1x1-medium"></div>
+                          <div class="layout34_item-icon-wrapper"><img loading="lazy" src="<?= asset('images/bullot.png') ?>" alt="" class="icon-1x1-medium"></div>
                           <div class="layout34_item-text-wrapper">
                             <div class="margin-bottom margin-xsmall">
                               <h3 class="heading-style-h5">Specifications Coming Soon</h3>
@@ -817,7 +817,7 @@ margin: 0rem !important;
                                       'w-node-_7ce207f1-4f29-2d49-14c5-5a1554d043c7-3453c016');
                             echo '
                             <div id="' . $nodeId . '" class="layout34_item">
-                              <div class="layout34_item-icon-wrapper"><img loading="lazy" src="/dmt.lk/images/bullot.png" alt="" class="icon-1x1-medium"></div>
+                              <div class="layout34_item-icon-wrapper"><img loading="lazy" src="<?= asset('images/bullot.png') ?>" alt="" class="icon-1x1-medium"></div>
                               <div class="layout34_item-text-wrapper">
                                 <div class="margin-bottom margin-xsmall">
                                   <h3 class="heading-style-h5">' . htmlspecialchars($spec['title'] ?: 'Specification') . '</h3>
@@ -837,12 +837,12 @@ margin: 0rem !important;
                       $specImage = $product['specifications_image'];
                       // Ensure the image path is absolute
                       if (!str_starts_with($specImage, '/') && !str_starts_with($specImage, 'http')) {
-                          $specImage = '/dmt.lk/' . ltrim($specImage, '/');
+                          $specImage = asset($specImage);
                       }
                       ?>
                       <img loading="lazy" src="<?= htmlspecialchars($specImage) ?>" alt="Product Specifications" class="layout34_image">
                     <?php else: ?>
-                      <img loading="lazy" src="/dmt.lk/images/placeholder-image.svg" alt="" class="layout34_image">
+                      <img loading="lazy" src="<?= asset('images/placeholder-image.svg') ?>" alt="" class="layout34_image">
                     <?php endif; ?>
                   </div>
                 </div>
@@ -871,7 +871,7 @@ margin: 0rem !important;
                 <div class="w-layout-grid layout238_list">
                   <div class="layout238_item is-card">
                     <div class="margin-bottom margin-small">
-                      <div class="layout238_item-icon-wrapper"><img loading="lazy" src="/dmt.lk/images/For-Individual-Players.avif" alt="" class="icon-1x1-medium"></div>
+                      <div class="layout238_item-icon-wrapper"><img loading="lazy" src="<?= asset('images/For-Individual-Players.avif') ?>" alt="" class="icon-1x1-medium"></div>
                     </div>
                     <div class="margin-bottom margin-small">
                       <h3 class="heading-style-h5">For Individual Players</h3>
@@ -885,7 +885,7 @@ margin: 0rem !important;
                   </div>
                   <div class="layout238_item is-card">
                     <div class="margin-bottom margin-small">
-                      <div class="layout238_item-icon-wrapper"><img loading="lazy" src="/dmt.lk/images/For-Retailers.avif" alt="" class="icon-1x1-medium"></div>
+                      <div class="layout238_item-icon-wrapper"><img loading="lazy" src="<?= asset('images/For-Retailers.avif') ?>" alt="" class="icon-1x1-medium"></div>
                     </div>
                     <div class="margin-bottom margin-small">
                       <h3 class="heading-style-h5">For Retailers</h3>
@@ -997,6 +997,6 @@ margin: 0rem !important;
     </footer>
   </div>
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=68ac3916626e46cbd1a97ae5" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-  <script src="/dmt.lk/js/webflow.js" type="text/javascript"></script>
+  <script src="<?= asset('js/webflow.js') ?>" type="text/javascript"></script>
 </body>
 </html>
