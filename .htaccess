@@ -3,8 +3,8 @@ RewriteEngine On
 # Prevent access to backup directory
 RewriteRule ^old-website-backup/ - [F,L]
 
-# Handle admin panel files directly
-RewriteRule ^admin/ - [L]
+# Handle admin panel files directly (allow access)
+RewriteRule ^admin/(.*)$ admin/$1 [L]
 
 # Handle static assets (CSS, JS, images, etc.)
 RewriteRule ^(css|js|images|fonts|uploads|documents|phpmailer|config)/ - [L]
