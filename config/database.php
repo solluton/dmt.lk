@@ -1,13 +1,29 @@
 <?php
-// Load environment variables
+// Direct database configuration (bypassing .env file)
+// This ensures the database connection works regardless of .env file issues
+
+// Load environment variables (but don't rely on them)
 require_once __DIR__ . '/env.php';
 require_once __DIR__ . '/security.php';
 
-// Database configuration
-define('DB_HOST', env('DB_HOST', 'premium5.web-hosting.com'));
-define('DB_USER', env('DB_USER', 'sollvctb_dmtlk'));
-define('DB_PASS', env('DB_PASS', 'F640Vk=l}lKK'));
-define('DB_NAME', env('DB_NAME', 'sollvctb_dmtlk'));
+// Direct database configuration with your working credentials
+define('DB_HOST', 'premium5.web-hosting.com');
+define('DB_USER', 'sollvctb_dmtlk');
+define('DB_PASS', 'F640Vk=l}lKK');
+define('DB_NAME', 'sollvctb_dmtlk');
+
+// Override with .env values if they exist (but use hardcoded as fallback)
+if (function_exists('env')) {
+    $env_host = env('DB_HOST');
+    $env_user = env('DB_USER');
+    $env_pass = env('DB_PASS');
+    $env_name = env('DB_NAME');
+    
+    if ($env_host) define('DB_HOST', $env_host);
+    if ($env_user) define('DB_USER', $env_user);
+    if ($env_pass) define('DB_PASS', $env_pass);
+    if ($env_name) define('DB_NAME', $env_name);
+}
 
 // Secure session configuration
 function secureSession() {
@@ -42,7 +58,7 @@ if (session_status() === PHP_SESSION_NONE) {
 // Create database connection
 function getDBConnection() {
     try {
-        $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=`" . DB_NAME . "`", DB_USER, DB_PASS);
+        $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASS);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $pdo;
     } catch(PDOException $e) {
