@@ -1,6 +1,6 @@
 {
-  "company_name": "DMT Cricket",
-  "website": "https://dmtcricket.com",
+  "company_name": "Dimath Sports (Private) Limited",
+  "website": "https://dmt.lk",
   "email": "contact@dmt.lk",
   "phone": "+94 769 175 175",
   "address": {
@@ -15,30 +15,30 @@
     "sunday": "10:00 AM - 2:00 PM"
   },
   "social_media": {
-    "facebook": "https://facebook.com/dmtcricket",
-    "linkedin": "https://linkedin.com/company/dmtcricket",
-    "twitter": "https://twitter.com/dmtcricket",
-    "instagram": "https://instagram.com/dmtcricket"
+    "facebook": "https://www.facebook.com/people/DMT-Athletics-Performance/61579245463107/",
+    "instagram": "https://www.instagram.com/play.dmt",
+    "tiktok": "https://www.tiktok.com/@play.dmt",
+    "youtube": "https://www.youtube.com/@play.dmt"
   },
   "logo_url": "https://cdn.prod.website-files.com/68ac3916626e46cbd1a97ae5/68c8e9181cfe24fc25939d08_DMT%20LOGO%20Main.avif",
   "email_templates": {
     "admin_notification": {
-      "subject": "New Cricket Equipment Inquiry from {{first_name}} - DMT Cricket",
+      "subject": "New Cricket Equipment Inquiry from {{first_name}} - Dimath Sports",
       "congratulations_message": "🏏 Great! A new cricket equipment inquiry has been received!",
       "lead_info_title": "📋 Customer Inquiry Details",
       "show_cta_button": false,
       "cta_button_text": "View Inquiry in Dashboard",
       "cta_button_url": "/admin/contact-leads",
-      "powered_by_text": "Powered by DMT Cricket"
+      "powered_by_text": "Powered by Dimath Sports (Private) Limited"
     },
     "auto_reply": {
-      "subject": "{{first_name}}, thank you for your cricket equipment inquiry - DMT Cricket",
+      "subject": "{{first_name}}, thank you for your cricket equipment inquiry - Dimath Sports",
       "header_title": "{{greeting}}",
       "header_subtitle": "Your cricket equipment inquiry has been received",
-      "greeting": "Thank you for your interest in DMT Cricket equipment!",
+      "greeting": "Thank you for your interest in Dimath Sports cricket equipment!",
       "personal_greeting": "Hello {{first_name}},",
       "main_message": "{{greeting_time}} {{first_name}}! We have successfully received your cricket equipment inquiry and our team will review your message carefully. We strive to respond {{response_urgency}} with detailed information about our cricket gear.",
-      "closing_message": "We appreciate your interest in DMT Cricket equipment and look forward to helping you find the perfect cricket gear.",
+      "closing_message": "We appreciate your interest in Dimath Sports cricket equipment and look forward to helping you find the perfect cricket gear.",
       "submission_details_title": "📋 Your Inquiry Details:",
       "submission_subject_label": "Subject:",
       "submission_date_label": "Submitted:",
@@ -46,8 +46,8 @@
       "response_time": "24 hours",
       "contact_info_title": "📞 Contact Information",
       "business_hours_title": "🕒 Business Hours:",
-      "footer_thank_you": "Thank you for choosing DMT Cricket",
-      "copyright_text": "© {{current_year}} DMT Cricket. All rights reserved."
+      "footer_thank_you": "Thank you for choosing Dimath Sports (Private) Limited",
+      "copyright_text": "© {{current_year}} Dimath Sports (Private) Limited. All rights reserved."
     }
   },
   "variables": {
