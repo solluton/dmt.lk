@@ -21,8 +21,14 @@ cache/
 tmp/
 temp/
 
-# Uploads (if you want to exclude uploaded files)
-# uploads/
+# Uploaded Image Files Only
+uploads/**/*.jpg
+uploads/**/*.jpeg
+uploads/**/*.png
+uploads/**/*.gif
+uploads/**/*.avif
+uploads/**/*.webp
+uploads/**/*.svg
 
 # IDE Files
 .vscode/
