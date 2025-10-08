@@ -55,6 +55,10 @@ composer.lock
 *.tmp
 *.temp
 
+# Email Queue Lock Files
+email_queue.lock
+*.lock
+
 # Configuration Files with Sensitive Data
 config/local.php
 config/production.php
