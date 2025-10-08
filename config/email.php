@@ -391,6 +391,10 @@ function generateContactEmailTemplate($lead_data) {
             
             <table role="presentation" class="form-field-table" border="0" cellspacing="0" cellpadding="0">
                 <tr class="form-field-row">
+                    <td class="field-label">Full Name:</td>
+                    <td class="field-value">' . htmlspecialchars($lead_data['name']) . '</td>
+                </tr>
+                <tr class="form-field-row">
                     <td class="field-label">First Name:</td>
                     <td class="field-value">' . htmlspecialchars($first_name) . '</td>
                 </tr>

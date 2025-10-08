@@ -80,7 +80,7 @@ function queueContactEmailNotification($lead_data) {
         $pdo = (php_sapi_name() === 'cli') ? getSimpleDBConnection() : getDBConnection();
         
         // Get notification email from admin settings
-        $notification_email = 'admin@neomed.lk'; // Default fallback
+        $notification_email = 'contact@dmt.lk'; // Default fallback
         
         try {
             $stmt = $pdo->prepare("SELECT setting_value FROM admin_settings WHERE setting_key = 'contact_email'");
@@ -112,7 +112,7 @@ function queueContactEmailNotification($lead_data) {
         $admin_queue_result = queueEmail(
             $notification_email,
             $_ENV['FROM_EMAIL'] ?? 'leads@solluton.com',
-            $_ENV['FROM_NAME'] ?? 'Neomed | Website',
+            $_ENV['FROM_NAME'] ?? 'Dimath Sports | Website',
             $admin_subject,
             $admin_html_body,
             true, // is_html
@@ -128,7 +128,7 @@ function queueContactEmailNotification($lead_data) {
         $customer_queue_result = queueEmail(
             $lead_data['email'], // Send to the person who submitted the form
             $_ENV['FROM_EMAIL'] ?? 'leads@solluton.com',
-            $_ENV['FROM_NAME'] ?? 'Neomed | Website',
+            $_ENV['FROM_NAME'] ?? 'Dimath Sports | Website',
             $customer_subject,
             $customer_html_body,
             true, // is_html
@@ -151,6 +151,8 @@ function queueContactEmailNotification($lead_data) {
             return [
                 'success' => true,
                 'message' => $message . implode(', ', $queued_emails),
+                'admin_queued' => $admin_queue_result['success'],
+                'customer_queued' => $customer_queue_result['success'],
                 'admin_queue_id' => $admin_queue_result['queue_id'] ?? null,
                 'customer_queue_id' => $customer_queue_result['queue_id'] ?? null,
                 'details' => [
