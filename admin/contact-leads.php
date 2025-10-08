@@ -226,7 +226,7 @@ try {
                             <?php echo ucfirst($lead['status']); ?>
                           </span>
                         </td>
-                        <td><?php echo date('M j, Y', strtotime($lead['created_at'])); ?></td>
+                        <td><?php echo date('M j, H:i', strtotime($lead['created_at'])); ?></td>
                         <td>
                           <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#leadModal<?php echo $lead['id']; ?>">
                             <i class="fi fi-rr-eye"></i>
