@@ -880,9 +880,9 @@ function generateAutoReplyTemplate($lead_data, $company_details) {
                 ' . (!empty($company_details['business_hours']) ? '
                 <div class="business-hours">
                     <div style="font-weight: 600; margin-bottom: 10px; color: #333;">' . processEmailTemplate($templates['business_hours_title'], $variables) . '</div>
-                    ' . (!empty($company_details['business_hours']['monday_friday']) ? '<div class="hours-item"><span>Monday - Friday:</span><span>' . htmlspecialchars($company_details['business_hours']['monday_friday']) . '</span></div>' : '') . '
-                    ' . (!empty($company_details['business_hours']['saturday']) ? '<div class="hours-item"><span>Saturday:</span><span>' . htmlspecialchars($company_details['business_hours']['saturday']) . '</span></div>' : '') . '
+                    ' . (!empty($company_details['business_hours']['monday_saturday']) ? '<div class="hours-item"><span>Monday - Saturday:</span><span>' . htmlspecialchars($company_details['business_hours']['monday_saturday']) . '</span></div>' : '') . '
                     ' . (!empty($company_details['business_hours']['sunday']) ? '<div class="hours-item"><span>Sunday:</span><span>' . htmlspecialchars($company_details['business_hours']['sunday']) . '</span></div>' : '') . '
+                    ' . (!empty($company_details['business_hours']['poya_day']) ? '<div class="hours-item"><span>Poya Day:</span><span>' . htmlspecialchars($company_details['business_hours']['poya_day']) . '</span></div>' : '') . '
                 </div>
                 ' : '') . '
             </div>

@@ -10,9 +10,9 @@
     "country": "Sri Lanka"
   },
   "business_hours": {
-    "monday_friday": "9:00 AM - 6:00 PM",
-    "saturday": "9:00 AM - 4:00 PM",
-    "sunday": "10:00 AM - 2:00 PM"
+    "monday_saturday": "8:00 AM - 5:00 PM",
+    "sunday": "Closed",
+    "poya_day": "Closed"
   },
   "social_media": {
     "facebook": "https://www.facebook.com/people/DMT-Athletics-Performance/61579245463107/",
