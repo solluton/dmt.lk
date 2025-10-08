@@ -194,7 +194,8 @@ function redirectIfLoggedIn() {
     }
 }
 
-// Set timezone to match database
+// Set timezone to Sri Lankan timezone (Asia/Colombo)
+// This ensures all PHP date/time functions use Sri Lankan time
 date_default_timezone_set('Asia/Colombo');
 
 // Initialize database on include
