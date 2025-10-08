@@ -298,12 +298,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
         
-        // Ensure slug uniqueness
+        // Ensure slug uniqueness (exclude current product when updating)
         $originalSlug = $slug;
         $counter = 1;
         while (true) {
-            $check = $pdo->prepare("SELECT id FROM products WHERE slug = ? LIMIT 1");
-            $check->execute([$slug]);
+            $check = $pdo->prepare("SELECT id FROM products WHERE slug = ? AND id != ? LIMIT 1");
+            $check->execute([$slug, $product_id]);
             if (!$check->fetch()) break;
             $slug = $originalSlug . '-' . $counter;
             $counter++;
