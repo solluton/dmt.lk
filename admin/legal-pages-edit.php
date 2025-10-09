@@ -65,9 +65,9 @@ try {
   <meta charset="utf-8" />
   <meta http-equiv="x-ua-compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="NeoMed Pharma - Edit Legal Page" />
-  <meta name="keyword" content="neomed, pharma, legal, edit, admin" />
-  <meta name="author" content="NeoMed Pharma" />
+  <meta name="description" content="DMT Cricket - Edit Legal Page" />
+  <meta name="keyword" content="dmt, cricket, legal, edit, admin" />
+  <meta name="author" content="DMT Cricket" />
   
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -174,7 +174,7 @@ try {
             <h5 class="card-title mb-0">Edit <?php echo htmlspecialchars($page_data['title']); ?></h5>
           </div>
           <div class="card-body">
-            <form method="POST" action="" onsubmit="return confirmUpdate()">
+            <form method="POST" action="" onsubmit="return confirmUpdate(event)">
               <div class="row">
                 <div class="col-12">
                   <div class="mb-4">
@@ -214,7 +214,9 @@ try {
   
   <!-- SweetAlert2 Confirmation -->
   <script>
-    function confirmUpdate() {
+    function confirmUpdate(event) {
+      event.preventDefault(); // Prevent default form submission
+      
       Swal.fire({
         title: 'Update Legal Page?',
         text: 'Are you sure you want to update this legal page? This will change the content visible to website visitors.',
@@ -229,9 +231,6 @@ try {
         if (result.isConfirmed) {
           // Submit the form
           event.target.submit();
-        } else {
-          // Prevent form submission
-          return false;
         }
       });
       return false; // Prevent default form submission
