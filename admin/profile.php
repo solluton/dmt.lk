@@ -184,7 +184,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                   <h5 class="card-title mb-0">Profile Information</h5>
                 </div>
                 <div class="card-body">
-                  <form method="POST" action="" enctype="multipart/form-data" onsubmit="return confirmProfileUpdate()">
+                  <form method="POST" action="" enctype="multipart/form-data" onsubmit="return confirmProfileUpdate(event)">
                     <div class="row">
                       <div class="col-md-6">
                         <div class="mb-3">
@@ -218,7 +218,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                       <button type="submit" class="btn btn-primary">
                         <i class="fi fi-rr-disk me-2"></i>Update Profile
                       </button>
-                      <a href="/dashboard" class="btn btn-outline-secondary">
+                      <a href="dashboard.php" class="btn btn-outline-secondary">
                         <i class="fi fi-rr-arrow-left me-2"></i>Back to Dashboard
                       </a>
                     </div>
@@ -275,7 +275,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     
     // Profile update confirmation
-    function confirmProfileUpdate() {
+    function confirmProfileUpdate(event) {
+      event.preventDefault(); // Prevent default form submission
+      
       Swal.fire({
         title: 'Update Profile?',
         text: 'Are you sure you want to update your profile information?',
@@ -290,9 +292,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (result.isConfirmed) {
           // Submit the form
           event.target.submit();
-        } else {
-          // Prevent form submission
-          return false;
         }
       });
       return false; // Prevent default form submission

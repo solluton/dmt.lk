@@ -1,0 +1,12 @@
+# Profile Pictures Directory Security Protection
+# Protects the profile pictures directory from unauthorized access
+
+# Allow image files
+<FilesMatch "\.(jpg|jpeg|png|gif|webp|avif)$">
+    Require all granted
+</FilesMatch>
+
+# Deny everything else
+<FilesMatch "^(?!.*\.(jpg|jpeg|png|gif|webp|avif)$).*$">
+    Require all denied
+</FilesMatch>
